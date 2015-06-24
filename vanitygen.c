@@ -368,8 +368,8 @@ main(int argc, char **argv)
 	while ((opt = getopt(argc, argv, "Luvqnrik1eE:P:CNTX:F:t:h?f:o:s:")) != -1) {
 		switch (opt) {
 		case 'u':
-		        compressed = 0;
-		        break;
+			compressed = 0;
+			break;
 		case 'v':
 			verbose = 2;
 			break;
