@@ -316,7 +316,8 @@ usage(const char *name)
 "-N            Generate namecoin address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
-"-F <format>   Generate address with the given format (pubkey, compressed, script)\n"
+"-u            Generate uncompressed addresses\n"
+"-F <format>   Generate address with the given format (pubkey, uncompressed, script)\n"
 "-P <pubkey>   Specify base public key for piecewise key generation\n"
 "-e            Encrypt private keys, prompt for password\n"
 "-E <password> Encrypt private keys with <password> (UNSAFE)\n"
@@ -360,14 +361,14 @@ main(int argc, char **argv)
 	int pattfpi[MAX_FILE];
 	int npattfp = 0;
 	int pattstdin = 0;
-	int compressed = 0;
+	int compressed = 1;
 
 	int i;
 
-	while ((opt = getopt(argc, argv, "Lvqnrik1eE:P:CNTX:F:t:h?f:o:s:")) != -1) {
+	while ((opt = getopt(argc, argv, "Luvqnrik1eE:P:CNTX:F:t:h?f:o:s:")) != -1) {
 		switch (opt) {
-		case 'c':
-		        compressed = 1;
+		case 'u':
+		        compressed = 0;
 		        break;
 		case 'v':
 			verbose = 2;
@@ -419,8 +420,8 @@ main(int argc, char **argv)
 			if (!strcmp(optarg, "script"))
 				format = VCF_SCRIPT;
                         else
-                        if (!strcmp(optarg, "compressed"))
-                                compressed = 1;
+                        if (!strcmp(optarg, "uncompressed"))
+                                compressed = 0;
                         else
 			if (strcmp(optarg, "pubkey")) {
 				fprintf(stderr,
