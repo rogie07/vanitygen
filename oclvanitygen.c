@@ -60,7 +60,8 @@ usage(const char *name)
 "-N            Generate namecoin address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
-"-F <format>   Generate address with the given format (pubkey, compressed)\n"
+"-u            Generate uncompressed addresses\n"
+"-F <format>   Generate address with the given format (pubkey, uncompressed)\n"
 "-e            Encrypt private keys, prompt for password\n"
 "-E <password> Encrypt private keys with <password> (UNSAFE)\n"
 "-p <platform> Select OpenCL platform\n"
@@ -120,13 +121,16 @@ main(int argc, char **argv)
 	int pattfpi[MAX_FILE];
 	int npattfp = 0;
 	int pattstdin = 0;
-	int compressed = 0;
+	int compressed = 1;
 
 	int i;
 
 	while ((opt = getopt(argc, argv,
-			     "vqik1NTX:F:eE:p:P:d:w:t:g:b:VSh?f:o:s:D:")) != -1) {
+			     "uvqik1NTX:F:eE:p:P:d:w:t:g:b:VSh?f:o:s:D:")) != -1) {
 		switch (opt) {
+		case 'u':
+			compressed = 0;
+			break;
 		case 'v':
 			verbose = 2;
 			break;
