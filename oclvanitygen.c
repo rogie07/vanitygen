@@ -63,6 +63,7 @@ usage(const char *name)
 "-X <version>  Generate address with the given version\n"
 "-u            Generate uncompressed addresses\n"
 "-F <format>   Generate address with the given format (pubkey, uncompressed)\n"
+"-P <pubkey>   Specify base public key for piecewise key generation\n"
 "-e            Encrypt private keys, prompt for password\n"
 "-E <password> Encrypt private keys with <password> (UNSAFE)\n"
 "-p <platform> Select OpenCL platform\n"
