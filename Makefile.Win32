@@ -1,4 +1,4 @@
-CC = cl
+CC = gcc
 OPENSSL_DIR = C:\OpenSSL-Win32
 PTHREADS_DIR = C:\pthreads-w32-2-8-0-release
 PCRE_DIR = C:\pcre-7.9-src
